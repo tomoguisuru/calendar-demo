@@ -1,0 +1,15 @@
+@import 'modules/-colors';
+@import 'modules/-fonts';
+@import 'modules/-calendar';
+
+html, body, .ember-application > div.ember-view {
+  font-family: 'Alegreya Sans', sans-serif;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  margin: 15px;
+}
+

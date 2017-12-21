@@ -1,0 +1,46 @@
+<div class="calendar">
+  <div class="calendar-nav">
+    <div class="calendar-nav__content" role="button" {{action "changeMonth" false}}>
+      &lt;
+    </div>
+
+    <div class="calendar-nav__content">
+      {{moment-format model 'MMM YYYY'}}
+    </div>
+
+    <div class="calendar-nav__content" role="button" {{action "changeMonth"}}>
+      &gt;
+    </div>
+  </div>
+
+  <div class="calendar-body">
+    <div class="calendar-body__row">
+      {{#each datesOfTheWeek as |day|}}
+        <div class="calendar-body__row--item calendar-body__row--item-header">
+          <div class="d-part">
+            <div class="d-part__content">
+              {{day}}
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+
+    {{#each calendarWeeks as |week|}}
+      <div class="calendar-body__row">
+        {{#each week as |day|}}
+          <div class="calendar-body__row--item{{if day.isSelectedMonth '' ' isMuted'}}{{if day.isToday ' isActive'}}">
+            <div class="d-part">
+              <div class="d-part__content">
+                <div class="day-date">
+                  {{moment-format day.date 'D'}}
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}
+
+  </div>
+</div>
