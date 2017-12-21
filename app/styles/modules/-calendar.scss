@@ -1,0 +1,46 @@
+.calendar {
+  &-body {
+    border-bottom: 1px solid;
+
+    &__row {
+      display: flex;
+      border-top: 1px solid;
+
+      &--item {
+        flex: 1;
+        height: 65px;
+        border-left: 1px solid;
+
+        &-header {
+          height: 25px;
+          overflow: hidden;
+          text-align: center;
+        }
+
+        &:last-child {
+          border-right: 1px solid;
+        }
+
+        &.isActive {
+          color: white;
+          background-color: #2B4970;
+        }
+
+        &.isMuted {
+          background-color: darkgray;
+        }
+      }
+    }
+  }
+
+  &-nav {
+    display: flex;
+
+    &__content {
+      flex: 1;
+      text-align: center;
+
+    }
+  }
+}
+

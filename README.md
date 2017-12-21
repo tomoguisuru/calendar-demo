@@ -1,7 +1,7 @@
-# calendar-demo
+# Calendar Application Demo
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is a simple calendar application that uses Moment to generate a calendar
+that can display events
 
 ## Prerequisites
 
@@ -11,22 +11,29 @@ You will need the following things properly installed on your computer.
 * [Node.js](https://nodejs.org/) (with NPM)
 * [Ember CLI](https://ember-cli.com/)
 * [Google Chrome](https://google.com/chrome/)
+* [Yarn](https://yarnpkg.com/en/)
 
 ## Installation
 
 * `git clone <repository-url>` this repository
 * `cd calendar-demo`
-* `npm install`
+* `yarn prep`
 
 ## Running / Development
 
-* `ember serve`
+* `ember serve` or `yarn serve` to disable LiveReload
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 * Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
 ### Code Generators
 
 Make use of the many generators for code, try `ember help generate` for more details
+
+#### Controllers, Routes, and Components
+
+      ember g controller awesome-controller --pod
+      ember g controller awesome-route --pod
+      ember g controller awesome-component --pod
 
 ### Running Tests
 

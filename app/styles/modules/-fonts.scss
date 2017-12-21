@@ -1,0 +1,10 @@
+@mixin font-size($namespace: "") {
+  $pixels: 16 18 24 32 36 40 48 64 96 128 256;
+  @each $size in $pixels {
+    .#{$namespace}font--#{$size} {
+      font-size: #{$size}px;
+    }
+  }
+}
+
+@include font-size();
