@@ -9,7 +9,6 @@ html, body, .ember-application > div.ember-view {
   height: 100%;
 }
 
-body {
-  margin: 15px;
+html {
+  background-color: $color-secondary-lighter;
 }
-

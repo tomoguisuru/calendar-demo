@@ -15,10 +15,10 @@ const CalendarDetailsController = Controller.extend({
     if (!date || !date.isValid()) { return; }
 
     // Set to the start of the month
-    date.startOf('month');
+    date.startOf('month').startOf('day');
 
     // clone it
-    const endDate = moment(date).endOf('month');
+    const endDate = moment(date).endOf('month').endOf('day');
 
     date.startOf('week');
 
@@ -34,7 +34,7 @@ const CalendarDetailsController = Controller.extend({
   generateWeek(startOfWeek, selectedMonth) {
     const date = moment(startOfWeek);
     const week = new Array(7);
-    const today = moment();
+    const today = moment().startOf('day');
     const formatter = 'YYYY/MM/DD';
 
     let i = 0;
@@ -44,7 +44,9 @@ const CalendarDetailsController = Controller.extend({
         date:            date.clone(),
         isSelectedMonth: date.month() === selectedMonth,
         isToday:         date.format(formatter) === today.format(formatter),
+        isPast:          date.isBefore(today),
       };
+
       date.add(1, 'day');
       i++;
     }
