@@ -1,12 +1,17 @@
-import Controller from '@ember/controller';
-import { computed, get } from '@ember/object';
+import Component from '@ember/component';
+import ComponentBaseMixin from 'calendar-demo/mixins/component-base';
+
+import { get, computed } from '@ember/object';
 
 import moment from 'moment';
 
-const CalendarDetailsController = Controller.extend({
-  dateFormat:    'YYYY/MM',
+const CalendarBodyComponent = Component.extend(ComponentBaseMixin, {
+  classPrefix: 'calendar-body',
 
-  datesOfTheWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  daysOfTheWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  events:        [],
+
+  rowComponent: 'calendar-view/calendar-body/calendar-row',
 
   calendarWeeks: computed('model', function() {
     const date = moment(get(this, 'model'));
@@ -33,8 +38,8 @@ const CalendarDetailsController = Controller.extend({
 
   generateWeek(startOfWeek, selectedMonth) {
     const date = moment(startOfWeek);
-    const week = new Array(7);
     const today = moment().startOf('day');
+    const week = new Array(7);
     const formatter = 'YYYY/MM/DD';
 
     let i = 0;
@@ -53,22 +58,6 @@ const CalendarDetailsController = Controller.extend({
 
     return week;
   },
-
-  actions: {
-
-    changeMonth(shouldIncrease = true) {
-      const model = get(this, 'model');
-
-      if (shouldIncrease) {
-        model.add(1, 'month');
-      } else {
-        model.subtract(1, 'month')
-      }
-
-      this.transitionToRoute(`/calendar/${model.format(get(this, 'dateFormat'))}`, model);
-    }
-
-  },
 });
 
-export default CalendarDetailsController;
+export default CalendarBodyComponent;

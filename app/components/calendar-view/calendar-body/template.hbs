@@ -1,0 +1,17 @@
+{{#component rowComponent as |row|}}
+  {{#each daysOfTheWeek as |day|}}
+    {{#row.item bdAttrs="header"}}
+      {{day}}
+    {{/row.item}}
+  {{/each}}
+{{/component}}
+
+{{#each calendarWeeks as |week|}}
+  {{#component rowComponent as |row|}}
+    {{#each week as |day|}}
+      {{row.item bdAttrs="scrollable" day=day
+                 events=events
+      }}
+    {{/each}}
+  {{/component}}
+{{/each}}

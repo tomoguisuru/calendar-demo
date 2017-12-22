@@ -1,9 +1,15 @@
 import Route from '@ember/routing/route';
-import pad from 'calendar-demo/utils/pad';
 
+import { get, set } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { getOwner } from '@ember/application';
+
+import pad from 'calendar-demo/utils/pad';
 import moment from 'moment';
 
-export default Route.extend({
+const CalendarDetailsRoute = Route.extend({
+
+  store: service(),
 
   titleToken(model) {
     if (!model) { return; }
@@ -26,5 +32,21 @@ export default Route.extend({
     } else {
       return model;
     }
-  }
+  },
+
+  afterModel(model) {
+    const start = moment(model).startOf('month').startOf('day');
+    const end = moment(model).endOf('month').endOf('day');
+
+    return get(this, 'store').query('event', {
+      start_at: start.toISOString(),
+      end_at:   end.toISOString()
+    }).then(response => {
+      const controller = getOwner(this).lookup('controller:calendar.details');
+
+      set(controller, 'events', response);
+    });
+  },
 });
+
+export default CalendarDetailsRoute;
