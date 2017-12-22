@@ -11,14 +11,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{calendar-view/calendar-body}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#calendar-view/calendar-body}}
-      template block text
-    {{/calendar-view/calendar-body}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('.calendar-body').length > 0, true, 'Found element');
 });

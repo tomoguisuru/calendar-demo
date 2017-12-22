@@ -1,1 +1,19 @@
-{{yield}}
+{{#if hasBlock}}
+  {{yield}}
+{{else}}
+  <div class="d-part">
+    <div class="d-part__content">
+      <div class="day-date">
+        {{moment-format date 'D'}}
+      </div>
+
+      <div class="calendar-events">
+      {{#each filteredEvents as |event|}}
+        <div class="calendar-events__item">
+          {{event.title}}
+        </div>
+      {{/each}}
+      </div>
+    </div>
+  </div>
+{{/if}}

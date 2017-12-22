@@ -11,4 +11,8 @@ html, body, .ember-application > div.ember-view {
 
 html {
   background-color: $color-secondary-lighter;
+
+  div[role=button] {
+    cursor: pointer;
+  }
 }
