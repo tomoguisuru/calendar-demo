@@ -15,7 +15,7 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
+* `git clone git@github.com:tomoguisuru/calendar-demo.git` this repository
 * `cd calendar-demo`
 * `yarn prep`
 
@@ -46,8 +46,10 @@ Make use of the many generators for code, try `ember help generate` for more det
 * `ember build --environment production` (production)
 
 ### Deploying
+Export `S3_KEY`, `S3_SECRET`, and `S3_BUCKET` to your environment 
+variables and then deploy with `Yarn`
 
-Specify what it takes to deploy your app.
+    yarn deploy
 
 ## Further Reading / Useful Links
 
