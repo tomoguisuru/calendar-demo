@@ -1,9 +1,10 @@
 import Controller from '@ember/controller';
 import { computed, get } from '@ember/object';
+import GoogleTrackingMixin from 'calendar-demo/mixins/google-tracking';
 
 import moment from 'moment';
 
-const CalendarDetailsController = Controller.extend({
+const CalendarDetailsController = Controller.extend(GoogleTrackingMixin, {
   dateFormat:    'YYYY/MM',
 
   datesOfTheWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -64,6 +65,8 @@ const CalendarDetailsController = Controller.extend({
       } else {
         model.subtract(1, 'month')
       }
+
+      this._trackEvent('Calendar Nav', 'click', shouldIncrease ? 'Next' : 'Previous');
 
       this.transitionToRoute(`/calendar/${model.format(get(this, 'dateFormat'))}`, model);
     }

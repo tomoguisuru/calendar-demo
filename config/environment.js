@@ -6,7 +6,7 @@ module.exports = function(environment) {
     modulePrefix: 'calendar-demo',
     environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
 
     EmberENV: {
       FEATURES: {
@@ -27,6 +27,22 @@ module.exports = function(environment) {
     moment: {
       includeTimezone: 'all'
     },
+
+    metricsAdapters: [
+      {
+        name: 'GoogleAnalytics',
+        environments: ['development', 'production'],
+        config: {
+          id: 'UA-102798262-2',
+          // Use `analytics_debug.js` in development
+          debug: environment === 'development',
+          // Use verbose tracing of GA events
+          trace: environment === 'development',
+          // Ensure development env hits aren't sent to GA
+          sendHitTask: environment !== 'development'
+        }
+      },
+    ]
 
     // pageTitle: {
     //   separator: '|',

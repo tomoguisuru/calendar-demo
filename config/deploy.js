@@ -6,14 +6,14 @@ module.exports = function(deployTarget) {
       accessKeyId:      process.env.S3_KEY,
       secretAccessKey:  process.env.S3_SECRET,
       bucket:           process.env.S3_BUCKET,
-      region:           'us-west-2',
+      region:           'us-east-1',
       cacheControl:     'max-age=315360000, no-transform, public',
     },
     's3-index': {
       accessKeyId:      process.env.S3_KEY,
       secretAccessKey:  process.env.S3_SECRET,
       bucket:           process.env.S3_BUCKET,
-      region:           'us-west-2',
+      region:           'us-east-1',
       allowOverwrite:   true,
     },
   };

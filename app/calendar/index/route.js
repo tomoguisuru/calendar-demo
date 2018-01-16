@@ -7,7 +7,7 @@ export default Route.extend({
   activate() {
     const now = moment();
 
-    this.replaceWith(`/calendar/${now.year()}/${now.month() + 1}`);
+    this.replaceWith(`/calendar/${now.format('YYYY/MM')}`);
   }
 
 });
